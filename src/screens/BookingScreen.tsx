@@ -28,6 +28,7 @@ export const BookingScreen = () => {
       return total + (seat ? seat.price : 0);
     }, 0);
   }, [selectedSeatIds]);
+  
   return (
     <div className="App">
       <StatusBar />
@@ -120,8 +121,7 @@ export const BookingScreen = () => {
             {ALL_SEATS.map((seat) => {
               const isSelected = selectedSeatIds.includes(seat.id);
 
-              const isFirstCouple =
-                seat.type === "couple" && seat.number === "1, 2";
+              const isFirstCouple = seat.id === "L12";
               return (
                 <div
                   key={seat.id}
@@ -129,7 +129,7 @@ export const BookingScreen = () => {
                     seat.isBooked ? "booked" : ""
                   } ${isSelected ? "selected" : ""}`}
                   onClick={() => handleSeatClick(seat)}
-                  style={isFirstCouple ? { gridColumnStart: 2 } : {}}
+                  style={isFirstCouple ? { gridColumn: "2 / span 2" } : {}}
                 >
                   <span className="seat-num">
                     {seat.type === "couple"

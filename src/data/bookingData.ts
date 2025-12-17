@@ -41,7 +41,7 @@ const generateSeats = (): Seat[] => {
   }
 
   //couple ticket
-  for (let k = 8; k >= 1; k--) {
+  for (let k = 1; k <= 8; k++) {
     const num1 = k * 2 - 1;
     const num2 = k * 2  ;
 
