@@ -1,18 +1,25 @@
 import { IoWifi, IoBatteryFull } from "react-icons/io5";
 
-const StatusBar = () => {
+
+interface StatusBarProps {
+    backgroundColor?: string;
+    contentColor?: string;
+}
+
+const StatusBar = ({ backgroundColor = "#fff", contentColor = "#000" }: StatusBarProps) => {
   const isMobileUA = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 
   const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 
-  if (isMobileUA && !isDev) return null;
+  if (isMobileUA && !isDev) return null
 
   return (
     <div
       style={{
         height: "44px",
-        backgroundColor: "#fff",
+        backgroundColor: backgroundColor,
+        color: contentColor,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -24,7 +31,6 @@ const StatusBar = () => {
         left: 0,
         right: 0,
         zIndex: 9999,
-        color: "#000",
       }}
     >
       <span>9:41</span>
